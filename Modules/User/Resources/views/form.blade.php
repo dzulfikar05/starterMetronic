@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-label ">
                         <label class="mb-2 col-12" for="user_role">Role</label>
-                        <select id="user_role" name="user_role" class="w-100" style="width: 100%">
+                        <select id="user_role" name="user_role" class="w-100 form-control dropdown-input" style="width: 100%;">
                             <option value="">- Pilih -</option>
                         </select>
                     </div>

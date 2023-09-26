@@ -15,7 +15,7 @@ var unblock = function(delay) {
     }, delay);
 }
 
-$('.required').append('<span class="text-danger"> *</span>')
+// $('.required').append('<span class="text-danger"> *</span>')
 
 var saMessage = function (config) {
     config = $.extend(true, {

@@ -36,15 +36,15 @@
                             </a>
                         </div>
                       
-                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1 ">
+                        <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="{{ set_show('user') }} menu-item menu-lg-down-accordion me-lg-1 ">
                             <span class="menu-link py-3">
                                 <span class="menu-title">Settings</span>
                                 <span class="menu-arrow d-lg-none"></span>
                             </span>
                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                 
-                                <div class="menu-item menu-user d-none {{ set_active('user') }}">
-                                    <a class="menu-link py-3" href="user" title="Management User" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                                <div class="menu-item menu-user d-none  {{ set_active('user') }}">
+                                    <a class="menu-link {{ set_active('user') }} py-3" href="user" title="Management User" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
                                         <span class="menu-icon">
                                             <span class="svg-icon svg-icon-2">
                                                 <i class="fa fa-user"></i>

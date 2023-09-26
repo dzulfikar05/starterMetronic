@@ -21,8 +21,8 @@ License: For each use you must have a valid license purchased only from above li
 
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 94,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
-    <meta name="keywords"
-        content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
+    {{-- <meta name="keywords"
+        content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, flaticon" /> --}}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
@@ -43,21 +43,28 @@ License: For each use you must have a valid license purchased only from above li
     <link href="template/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
 	
-	<!-- DataTables -->
+	{{-- <!-- DataTables -->
 	<link href="plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-	<link href="plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="plugins/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" /> --}}
 
 	<!-- Responsive datatable examples -->
-	<link href="plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />     
+	{{-- <link href="plugins/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />      --}}
 	
 	<!-- Sweet Alert-->
+	<link href="css/custom.css" rel="stylesheet" type="text/css" />
 	<link href="plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 	{{-- select2 --}}
 	<link href="plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
 	{{-- jstree --}}
 	<link href="plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     {{-- jquery --}}
     <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- #region datatables files -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+{{-- <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
+<!-- #endregion -->
 
 </head>
 <!--end::Head-->
@@ -3403,6 +3410,10 @@ License: For each use you must have a valid license purchased only from above li
     </script>
 
     <script>
+        $(()=> {
+            $(".paginate_button").addClass("btn btn-light btn-sm");
+            $('[name="table_user_length"]').addClass("btn btn-sm btn-light mx-2");
+        })
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -3419,21 +3430,21 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <!--begin::Javascript-->
     <!-- Required datatable js -->
-    <script src="plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    {{-- <script src="plugins/datatables.net/js/jquery.dataTables.min.js"></script> --}}
+    {{-- <script src="plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script> --}}
     <!-- Buttons examples -->
-    <script src="plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    {{-- <script src="plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script> --}}
+    {{-- <script src="plugins/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script> --}}
     <script src="plugins/jszip/jszip.min.js"></script>
     <script src="plugins/jstree/dist/jstree.min.js"></script>
     <script src="plugins/pdfmake/build/pdfmake.min.js"></script>
     <script src="plugins/pdfmake/build/vfs_fonts.js"></script>
-    <script src="plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    {{-- <script src="plugins/datatables.net-buttons/js/buttons.html5.min.js"></script> --}}
+    {{-- <script src="plugins/datatables.net-buttons/js/buttons.print.min.js"></script> --}}
+    {{-- <script src="plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script> --}}
     <!-- Responsive examples -->
-    <script src="plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    {{-- <script src="plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script> --}}
+    {{-- <script src="plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script> --}}
 
     <!-- Datatable init js -->
     {{-- <script src="assets/js/pages/datatables.init.js"></script> --}}

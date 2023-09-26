@@ -37,6 +37,9 @@
             serverSide: true,
             searchAble: true,
             searching: true,
+            columnDefs: [
+                {"className": "dt-center", "targets": "_all"}
+            ],
             paging: true,
             "bDestroy": true,
             ajax: "{{ route('user/table') }}",
