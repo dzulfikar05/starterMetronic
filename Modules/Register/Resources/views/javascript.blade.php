@@ -3,12 +3,12 @@
 
     $(() => {
         $('#toggle_password').click(function() {
-            if ('password' == $('#password').attr('type')) {
-                $('#password').prop('type', 'text');
+            if ('password' == $('#user_password').attr('type')) {
+                $('#user_password').prop('type', 'text');
                 $('#iconPassword').removeClass("fa-eye-slash");
                 $('#iconPassword').addClass("fa-eye");
             } else {
-                $('#password').prop('type', 'password');
+                $('#user_password').prop('type', 'password');
                 $('#iconPassword').addClass("fa-eye-slash");
                 $('#iconPassword').removeClass("fa-eye");
             }
