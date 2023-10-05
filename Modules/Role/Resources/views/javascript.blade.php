@@ -31,7 +31,7 @@
                 var html = '';
                 $.each(data.all_route, (i, v) => {
                     if (v['route_desc'] == 'sub') {
-                        html += `<label class="form-check ms-4">
+                        html += `<label class="form-check ms-4 my-2">
                                     <input id="route-${v['route_id']}" name="${v['route_id']}" class="form-check-input" type="checkbox"
                                         value="1">
                                     <span class="form-check-label">
@@ -40,7 +40,7 @@
                                 </label>`;
 
                     } else {
-                        html += `<label class="form-check">
+                        html += `<label class="form-check my-2 mt-4">
                                     <input id="route-${v['route_id']}" name="${v['route_id']}" class="form-check-input" type="checkbox"
                                         value="1">
                                     <span class="form-check-label">
