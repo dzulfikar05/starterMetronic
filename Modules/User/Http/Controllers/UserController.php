@@ -101,10 +101,11 @@ class UserController extends Controller
         $data['user_updated_at'] = date('Y-m-d H:i:s');
 
         if(isset($data['user_password'])){
-            $data['user_password'] = bcrypt($data['user_password']);
 
             if($data['user_password'] == '' || $data['user_password'] == null){
                 unset($data['user_password']);
+            }else{
+                $data['user_password'] = bcrypt($data['user_password']);
             }
         }
 

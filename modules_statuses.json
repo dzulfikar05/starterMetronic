@@ -3,5 +3,6 @@
     "Login": true,
     "User": true,
     "Dashboard": true,
-    "Role": true
+    "Role": true,
+    "Register": true
 }

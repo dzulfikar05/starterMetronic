@@ -33,7 +33,7 @@ var saMessage = function (config) {
             title: (config.title == "Failed") ? "Success" : config.title,
             text: config.message,
             icon: "success",
-            confirmButtonColor: "#3051d3",
+            confirmButtonColor: "#0095E8 ",
             cancelButtonColor: "#f46a6a",
             allowOutsideClick: config.allowOutsideClick,
         }).then(function (result) {
@@ -45,7 +45,7 @@ var saMessage = function (config) {
                 title: config.title,
                 text: config.message,
                 icon: "error",
-                confirmButtonColor: "#3051d3",
+                confirmButtonColor: "#0095E8 ",
                 cancelButtonColor: "#f46a6a",
                 allowOutsideClick: config.allowOutsideClick,
             }).then(function (result) {
@@ -56,7 +56,7 @@ var saMessage = function (config) {
                 title: config.title,
                 text: config.message,
                 icon: config.success,
-                confirmButtonColor: "#3051d3",
+                confirmButtonColor: "#0095E8 ",
                 cancelButtonColor: "#f46a6a",
                 allowOutsideClick: config.allowOutsideClick,
             }).then(function (result) {

@@ -35,9 +35,9 @@ class RoleController extends Controller
                     ->addColumn('action', function($row){
                         $id = $row->role_id;
                            $btn = '<div >
-                                    <a href="#" onclick="onEdit(this)" data-id="'.$id.'" title="Edit Data" class="btn btn-warning btn-sm"><i class="align-middle fa fa-pencil fw-light text-dark"> </i></a>
-                                    <a href="#" onclick="onDelete(this)" data-id="'.$id.'" title="Delete Data" class="btn btn-danger btn-sm"><i class="align-middle fa fa-trash fw-light"> </i></a>
-                                    <a href="#" onclick="onShowRole(this)" data-id="'.$id.'" title="Show List Menu" class="btn btn-primary btn-sm"><i class="align-middle fa fa-arrow-right fw-light"> </i></a>
+                                    <a href="#" onclick="onEdit(this)" data-id="'.$id.'" title="Edit Data" class="btn btn-warning btn-sm"><i class="align-middle fa fa-edit text-dark"></i></a>
+                                    <a href="#" onclick="onDelete(this)" data-id="'.$id.'" title="Delete Data" class="btn btn-danger btn-sm"><i class="align-middle fa fa-trash "></i></a>
+                                    <a href="#" onclick="onShowRole(this)" data-id="'.$id.'" title="Show List Menu" class="btn btn-primary btn-sm"><i class="align-middle fa fa-arrow-right"></i></a>
                                 </div>
                                 ';
     

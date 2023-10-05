@@ -1,187 +1,85 @@
-<?php
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Form Role</div>
+            </div>
+            <div class="card-body">
+                <form action="javascript:onSave(this)" method="post" id="form_role" name="form_role" autocomplete="off">
+                    <input type="hidden" name="role_id" id="role_id">
+                    <div class="form-label">
+                        <label class="mb-2 required" for="role_kode">Kode</label>
+                        <input id="role_kode" required name="role_kode" class="form-control form-control mb-3" type="text"
+                            placeholder="Kode">
+                    </div>
+                    <div class="form-label">
+                        <label class="mb-2 required" for="role_nama">Nama</label>
+                        <input id="role_nama" required name="role_nama" class="form-control form-control mb-3" type="text"
+                            placeholder="Nama">
+                    </div>
+                    <div class="form-group mt-5 d-flex justify-content-end">
+                        <button type="button" onclick="onReset()" class="btn btn-light me-3"><i class="align-middle"
+                                data-feather="rotate-ccw"> </i> Reset</button>
+                        <button type="submit" class="btn btn-success"><i class="align-middle" data-feather="save"> </i>
+                            Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Tabel Role</div>
+            </div>
+            <div class="card-body">
+                <div class="form-group d-flex justify-content-end mb-3">
+                    <button type="button" onclick="initTable()" class="btn btn-light "><i class="align-middle fa fa-sync"></i> Refresh</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-row-bordered border align-middle rounded w-100"
+                        id="table_role">
+                        <thead class="text-center">
+                            <tr class="fw-bolder">
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Nama</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-namespace Modules\Role\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB; 
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-
-use DataTables;
-
-class RoleController extends Controller
-{
-    public function index()
-    {
-        return view('main::index',[
-			'title' => 'Role',
-			'content' => view('role::index')
-		]);
-        // return view('dashboard::index');
-    }
-
-    public function initTable(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = DB::table('tb_role')->where([
-                    ['role_deleted_at', null], 
-                ])->get()->toArray();
-            
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-                        $id = $row->role_id;
-                           $btn = '<div >
-                                    <a href="#" onclick="onEdit(this)" data-id="'.$id.'" title="Edit Data" class="btn btn-warning btn-sm"><i class="align-middle fa fa-pencil fw-light text-dark"> </i></a>
-                                    <a href="#" onclick="onDelete(this)" data-id="'.$id.'" title="Delete Data" class="btn btn-danger btn-sm"><i class="align-middle fa fa-trash fw-light"> </i></a>
-                                    <a href="#" onclick="onShowRole(this)" data-id="'.$id.'" title="Show List Menu" class="btn btn-primary btn-sm"><i class="align-middle fa fa-arrow-right fw-light"> </i></a>
-                                </div>
-                                ';
-    
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-
-        return view('role.index');
-    }
-
-    public function store(Request $request){
-        $response=[];
-
-        $data = $request->input();
-        $data['role_id'] = unique_code();
-
-        $operation = DB::table('tb_role')->insert($data);
-        if($operation == 1){
-            $response['success'] = true;
-            $response['title'] = 'Success';
-            $response['message'] = 'Berhasil Menambahkan Data';
-        }else{
-            $response['success'] = false;
-            $response['title'] = 'Failed';
-            $response['message'] = 'Gagal Mengubah Data!';
-        }
-
-        return $response;
-    }
-
-    public function edit(Request $request){
-        $id = $request->input('role_id');
-
-        $operation = DB::table('tb_role')->where('role_id', $id)->get()->toArray();
-        return $operation;
-    }
-
-    public function update(Request $request)
-    {
-        $response=[];
-        $data = $request->input();
-
-        $data['role_updated_at'] = date('Y-m-d H:i:s');
-
-        $operation = DB::table('tb_role')->where('role_id', $data['role_id'])->update($data);
-
-        if($operation == 1){
-            $response['success'] = true;
-            $response['title'] = 'Success';
-            $response['message'] = 'Berhasil Mengubah Data!';
-        }else{
-            $response['success'] = false;
-            $response['title'] = 'Failed';
-            $response['message'] = 'Gagal Mengubah Data!';
-        }
-        return $response;
-    }
-
-    public function destroy(Request $request){
-        $response = [];
-        $id = $request->input('role_id');
-
-        $data = [
-            'role_deleted_at' => date('Y-m-d H:i:s'),
-        ];
-
-        $operation = DB::table('tb_role')->where('role_id', $id)->update($data);
-
-        if($operation == 1){
-            $response['success'] = true;
-            $response['title'] = 'Success';
-            $response['message'] = 'Berhasil Mengubah Data!';
-        }else{
-            $response['success'] = false;
-            $response['title'] = 'Failed';
-            $response['message'] = 'Gagal Mengubah Data!';
-        }
-        return $response;
-    }
-
-    public function show(Request $request)
-    {
-        $data = [];
-        $userRoleId =  $request->input('role_id');
-
-        // get all route
-        $getAll = DB::table('tb_route')->where([
-            ['route_active', 1], 
-        ])->orderBy('route_order', 'ASC')->get()->toArray();
-        $data['all_route'] = convertArray($getAll);
-
-        // get route in role
-        $getRole = DB::table('v_user_roles')->where([
-            ['user_role_role_id', $userRoleId], 
-            ])->orderBy('route_order', 'ASC')->get()->toArray();
-        $data['role'] = convertArray($getRole);
-        
-        return $data;
-    }
-
-    public function saveRole(Request $request)
-    {
-        $roleId = $request->input('role_id');
-        $response = [];
-        $data = $request->input();
-        // print_r($data);exit;
-        unset($data['role_id']);
-
-        $operationCheck = DB::table('tb_user_role')->where('user_role_role_id', $roleId)->get()->toArray();
-        if($operationCheck){
-            $operationDeleting = DB::table('tb_user_role')->where('user_role_role_id', $roleId)->delete();
-        }
-
-        // if($response['update'] == true){
-            foreach($data as $i => $v){
-                if($v == 1){
-                    $dataR['user_role_id'] = unique_code();
-                    $dataR['user_role_role_id'] = $roleId;
-                    $dataR['user_role_route_id'] = $i;
-
-                    $operation = DB::table('tb_user_role')->insert($dataR);
-
-                    if($operation == 1){
-                        $response['success'] = true;
-                        $response['title'] = 'Success';
-                        $response['message'] = 'Berhasil Mengubah Data!';
-                    }else{
-                        $response['success'] = false;
-                        $response['title'] = 'Failed';
-                        $response['message'] = 'Gagal Mengubah Data!';
-                    }
-                }
-            }
-        // }
-
-        return $response;
-    }
-
-    public function combobox(Request $request){
-        $operation = DB::table('tb_role')->whereNull('role_deleted_at')->get()->toArray();
-        $data = convertArray($operation);
-        return $data;
-    }
-   
-}
+<div class="modal viewRole" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">List Role Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:onSaveRole(this)" method="post" id="form_list_role" name="form_list_role"
+                    autocomplete="off">
+                    <div class="check-role">
+                       
+                    </div>
+                    <div id="test_tree"></div>
+                    <div class="form-group mt-5 d-flex justify-content-end">
+                        <button type="button" onclick="onResetCheck()" class="btn btn-light me-3"><i class="align-middle"
+                                data-feather="rotate-ccw"> </i> Reset</button>
+                        <button type="submit" class="btn btn-success"><i class="align-middle" data-feather="save"> </i>
+                            Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@include('role::javascript')

@@ -3411,7 +3411,8 @@ License: For each use you must have a valid license purchased only from above li
 
     <script>
         $(()=> {
-            $(".paginate_button").addClass("btn btn-light btn-sm");
+            // $('.paginate_button').addClass("btn btn-light btn-sm");
+            $('[name="table_role_length"]').addClass("btn btn-sm btn-light mx-2");
             $('[name="table_user_length"]').addClass("btn btn-sm btn-light mx-2");
         })
         $.ajax({

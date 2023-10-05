@@ -13,7 +13,7 @@
                 </div> --}}
             </div>
             <div class="menu-item menu-dashboard d-none">
-                <a class="menu-link active  {{ set_active('dashboard') }} " href="/">
+                <a class="menu-link {{ set_active('dashboard') }} " href="/">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                         <span class="svg-icon svg-icon-2">

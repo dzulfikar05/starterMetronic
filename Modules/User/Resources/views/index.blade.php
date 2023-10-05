@@ -11,7 +11,7 @@
                     <button type="button" onclick="initTable()" class="btn btn-light "><i class="align-middle fa fa-sync"> </i> Refresh</button>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover table-row-bordered border align-middle rounded w-100" id="table_user">
+                    <table class="table table-striped table-hover table-row-bordered border align-middle rounded w-100 table-responsive" id="table_user">
                         <thead class="text-center">
                             <tr class="fw-bolder">
                                 <th>No</th>

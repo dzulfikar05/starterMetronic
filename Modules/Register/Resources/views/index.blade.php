@@ -73,10 +73,20 @@ License: For each use you must have a valid license purchased only from above li
 
                         {{-- <img class="col-12" src="assets/logo/logo_loker.png" alt="logo"> --}}
                         <span class="fs-1 fw-bolder text-primary"><span class="text-dark ">App</span> Starter</span>
-                        <form action="javascript:onLogin(this)" method="post" id="form_login" name="form_login"
+                        <form action="javascript:onRegister(this)" method="post" id="form_register" name="form_register"
                             autocomplete="off" class="mt-5">
                             @csrf
 
+                            <div class="mb-3">
+                                <label class="form-label">Name</label>
+                                <input class="form-control form-control-lg" type="text" name="user_nama"
+                                    placeholder="Enter your name" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">username</label>
+                                <input class="form-control form-control-lg" type="text" name="user_username"
+                                    placeholder="Enter your username" />
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">Email</label>
                                 <input class="form-control form-control-lg" type="email" name="user_email"
@@ -87,10 +97,10 @@ License: For each use you must have a valid license purchased only from above li
                                 <span id="toggle_password" class="d-flex justify-content-end">
                                     <i id="iconPassword" class="fa fa-eye-slash"></i>
                                 </span>
-                                <input class="form-control form-control-lg" type="password" id="password"
-                                    name="password" placeholder="Enter your password" />
+                                <input class="form-control form-control-lg" type="password" id="user_password"
+                                    name="user_password" placeholder="Enter your password" />
                             </div>
-                            <span class="text-muted">don't have any account ? <a href="/register">Register</a></span>
+                            <span class="text-muted">already have an account ? <a href="/login">Login</a></span>
                             {{-- <div class="mb-3">
                                 <div class="form-group">
                                     <label>Password</label>
@@ -104,13 +114,13 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                             </div> --}}
 
-                            <button type="submit" class="btn btn-lg btn-primary col-12 mt-3">Log In</button>
+                            <button type="submit" class="btn btn-lg btn-primary col-12 mt-3">Register</button>
                         </form>
                     </div>
 
                 </div>
                 <div class="col-sm-5 px-0 d-none d-sm-block">
-                    <img src="assets/logo/tech.jpg" alt="Login image" class="w-100 vh-100" style="object-fit: cover;">
+                    <img src="assets/logo/tech.jpg" alt="register image" class="w-100 vh-100" style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -124,7 +134,7 @@ License: For each use you must have a valid license purchased only from above li
             }
         </style>
     </section>
-    @include('login::javascript')
+    @include('register::javascript')
     <!--end::Main-->
     <script>
         var hostUrl = "assets/";
