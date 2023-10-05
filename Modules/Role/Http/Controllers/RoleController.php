@@ -28,6 +28,7 @@ class RoleController extends Controller
         if ($request->ajax()) {
             $data = DB::table('tb_role')->where([
                     ['role_deleted_at', null], 
+                    ['role_id', '!=', 1], 
                 ])->get()->toArray();
             
             return Datatables::of($data)
